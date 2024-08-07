@@ -1,0 +1,69 @@
+## Your Task
+
+Generate a specific mini prompt for the described category. The prompt must be designed to fulfill the overall objective of the evaluation process, focusing on the specific category of the mini prompt. It is essential to use the specific placeholders for the corresponding category.
+
+## Before Starting
+
+Let's define some concepts:
+
+- **Mini Prompts:** These are small, specific parts of a larger prompt, designed to perform specific tasks in text generation or analysis. Each mini prompt has a defined function and can be combined with other mini prompts to form a complete prompt. They are stored in `.txt` files and use placeholders like `{context}`, `{question}`, and `{answer}` to insert specific information.
+- **Prompt:** A prompt is a combination of several mini prompts that work together to create a complete instruction. Each mini prompt in a prompt has a specific function and contributes to the formation of a broader task or response to a query.
+
+## Categories of Mini Prompts
+
+- **Examples:** Provides detailed examples and steps to perform a specific task.
+- **Context:** Offers additional relevant information to help the model understand or process the task.
+  - **Required Placeholder:** `{context}`
+- **Question:** Contains data related to the question posed to the student.
+  - **Required Placeholder:** `{question}`
+- **Answer:** Presents data derived from the student's response.
+  - **Required Placeholder:** `{answer}`
+- **Analysis:** Guides the model's analysis process through questions and guidelines on using context or knowledge.
+- **Feedback:** Offers comments on the student's performance, highlighting strengths and areas for improvement.
+- **Score:** Instructions for assigning a score based on the student's response and generated feedback.
+
+Below, you will find some mini prompts with their corresponding scores created by the objective function. The scores are in the range of:
+
+################
+{prompts_scores}
+################
+
+
+## Creating a Prompt from Mini Prompts
+
+A prompt is created from the `prompt_data` which configures the prompts. A mini prompt is taken from each category to create a prompt:
+`examples_1.txt` + `knowledge_1.txt` + `question_1.txt` + `answer_1.txt` + `analysis_1.txt` + `feedback_1.txt` + `score_2.txt` in the order of the categories.
+
+**prompt_data:**
+
+```python
+prompt_data = {
+    "examples": "examples_1.txt",
+    "context": "knowledge_1.txt",
+    "question": "question_1.txt",
+    "answer": "answer_1.txt",
+    "instructions": {
+        "analysis": "analysis_1.txt",
+        "feedback": "feedback_1.txt",
+        "score": "score_2.txt",
+    }
+}
+```
+
+Q: <Prompt created from mini prompts + question, answer, and knowledge data>
+A: <Evaluation of the student's question + feedback with score>
+
+
+## Main Task
+
+Create a mini prompt for the specific category that meets the established objective.
+
+## Objective
+
+The objective of creating a new mini prompt for the specific category is to minimize the MSE score between the evaluation score and the manual evaluation score by teachers of the specific subject.
+
+## Requirements for the Mini Prompt
+
+- **Specific Purpose:** The mini prompt must be designed to fulfill the overall objective of the evaluation process, focusing on the specific category of the mini prompt.
+- **Use of Placeholders:** It must use the specific placeholders for the corresponding category.
+- **Markdown Format:** Use markdown in a structured and consistent manner to ensure clarity and coherence in the presentation.

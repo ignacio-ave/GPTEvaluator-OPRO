@@ -1,0 +1,72 @@
+
+Tu tarea es generar un mini prompt específico de la categoría descrita. El prompt debe estar diseñado con el propósito de cumplir el objetivo general del proceso de evaluación, enfocado en la categoría del mini prompt. Es esencial que utilices los placeholders específicos de la categoría correspondiente.
+
+Antes de realizar la tarea definiremos algunos conceptos:
+- **Mini Prompts:** Son partes pequeñas y específicas de un prompt más grande, diseñadas para realizar tareas concretas en la generación o análisis de texto. Cada mini prompt tiene una función definida y puede combinarse con otros mini prompts para formar un prompt completo. Se almacenan en archivos `.txt` y utilizan placeholders como `{context}`, `{question}`, y `{answer}` para insertar información específica.
+- **Prompt:** Es una combinación de varios mini prompts que trabajan juntos para crear una instrucción completa. Cada mini prompt en un prompt tiene una función específica y contribuye a la formación de una tarea más amplia o a la respuesta a una consulta.
+
+
+**Categorías de Mini Prompts:**
+
+
+    1. **Examples:** Muestra ejemplos y pasos detallados para realizar una tarea específica.
+    2. **Context:** Proporciona información adicional relevante para ayudar al modelo a entender o procesar la tarea.
+        Placeholder Obligatorio: {context}
+    3. **Question:** Contiene los datos relacionados con la pregunta planteada al estudiante.
+        Placeholder Obligatorio: {question}
+    4. **Answer:** Presenta los datos derivados de la respuesta del estudiante.
+        Placeholder Obligatorio: {answer}
+    5. **Analysis:** Guía el proceso de análisis del modelo mediante preguntas y directrices sobre el uso del contexto o conocimiento.
+    6. **Feedback:** Ofrece comentarios sobre el desempeño del estudiante, destacando fortalezas y áreas de mejora.
+    7. **Score:** Instrucciones para asignar una puntuación basada en la respuesta del estudiante y la retroalimentación generada.
+
+Abajo encontrar algunos mini prompts con sus correspondientes scores creados por la funcion objetivo,
+los scores estan en el rango 
+
+
+################
+{prompts_scores}
+################
+
+
+La siguiente sección incluye ejemplos de cómo se aplica el texto o mini-prompt creado.
+
+
+<Creación de prompt en base a mini prompts>  
+
+
+Se crea un prompt con a partir del prompt_data el cual configura los prompts 
+Se toma un mini prompt de cada categoría para crear un prompt.  
+`examples_1.txt` + `knowledge_1.txt` + `question_1.txt` + `answer_1.txt` + `analysis_1.txt` + `feedback_1.txt` + `score_2.txt` en el orden de las categorías.
+
+
+**prompt_data:**
+
+
+```python
+prompt_data = {
+    "examples": "examples_1.txt",
+    "context": "knowledge_1.txt",
+    "question": "question_1.txt",
+    "answer": "answer_1.txt",
+    "instructions": {
+        "analysis": "analysis_1.txt",
+        "feedback": "feedback_1.txt",
+        "score": "score_2.txt",
+    }
+}
+```
+
+
+Q: <Prompt creado a partir de mini prompts + datos de Pregunta, Respuesta del alumno y Conocimiento>  
+A: <Evaluación a la pregunta del alumno + retroalimentación con score>
+
+
+**Tarea Principal:** Crear un mini prompt de la categoría específica que cumpla con el objetivo establecido.
+**Objetivo:** El objetivo de la creación de un nuevo mini prompt de la categoría específica es minimizar el score MSE entre el puntaje de la evaluación y el puntaje de la evaluación manual por maestros de la asignatura específica.
+
+
+**Requisitos para el Mini Prompt:**
+- **Propósito Específico:** El mini prompt debe estar diseñado con el propósito de cumplir el objetivo general del proceso de evaluación, enfocado en la categoría específica del mini prompt.
+- **Uso de Placeholders:** Debe utilizar de manera obligatoria los placeholders específicos de la categoría correspondiente.
+- **Formato Markdown:** Utiliza markdown de manera estructurada y acorde al formato del prompt para asegurar claridad y coherencia en la presentación.
